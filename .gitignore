@@ -1,4 +1,8 @@
+/config
+/node_modules
+/tsconfig.json
 /.idea
 _site
 .sass-cache
 .jekyll-metadata
+/libs

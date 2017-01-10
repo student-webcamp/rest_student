@@ -1,0 +1,64 @@
+%row {
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+}
+%flex1 {
+  flex: 1 0px;
+}
+%flex2 {
+  flex: 2 0px;
+}
+
+%flex3 {
+  flex: 3 0px;
+}
+
+.scrollable-table {
+  &__head {
+    padding: 1em 0;
+  }
+  &__body {
+    height: 600px;
+  }
+  &__row {
+    @extend %row;
+    cursor: pointer;
+    align-items: center;
+    & & {
+      margin-left: 10px;
+    }
+  }
+  &__cell {
+    flex: 2 0px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    word-break: break-all;
+    &--wide {
+      flex: 2 0px;
+    }
+    &--one {
+      @extend .scrollable-table__cell;
+      flex: 1 0px;
+    }
+    &--last {
+      padding: 5px;
+      flex: 1 0px;
+      text-align: center;
+    }
+    &.scrollable-table__cell--priority, &.scrollable-table__cell--status, &.scrollable-table__cell--createdBy{
+      @extend %flex1;
+    }
+    &.Description {
+      @extend %flex3;
+    }
+    &:hover {
+      .caret--outline {
+        opacity: 1;
+      }
+    }
+  }
+
+}
+

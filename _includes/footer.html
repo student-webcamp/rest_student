@@ -1,0 +1,25 @@
+<footer>
+  <div class="footer">
+    <div class="row grid">
+
+
+      <div class="medium-3 small-6 medium-offset-9 small-offset-6 columns footer__social text-right">
+        <p>Мы в соцсетях</p>
+        <ul class="list-inline">
+          <li><a href="https://www.facebook.com/webcamp.kiev" class="fi-social-facebook size-36"
+                 target="_blank"></a></li>
+          <li><a href="https://www.linkedin.com/company/webcamp" class="fi-social-linkedin size-36 ml-10"
+                 target="_blank"></a></li>
+          <li><a href="https://www.youtube.com/user/webcampkiev" class="fi-social-youtube size-36 ml-10"
+                 target="_blank"></a></li>
+          <li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
+          <li>subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="copyright text-center">
+    &copy; Copyright 2013 - {{ 'now' | date: "%Y" }} by <a
+          href="http://www.webcamp.com.ua/">webcamp</a>.
+  </div>
+</footer>

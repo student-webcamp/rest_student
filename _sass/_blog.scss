@@ -1,0 +1,129 @@
+// Descriptive Base Colors
+
+$white: #fff;
+$black: #001314;
+$grey: #797e83;
+
+$flamingo: #e7571e;
+$teal: #008184;
+$fountain-blue: #63c1c3;
+$azure: #37669c;
+//rgba(55, 102, 156, 100)
+$apricot: #e59f71;
+//rgba(229, 159, 113, 100)
+$copper_rust: #984447;
+$cream_can: #F0BA61;
+// Color Usage
+$bodycolor: $grey;
+$color-primary: $teal;
+$color-secondary: $flamingo;
+$color-accent: $azure;
+$color-shadow: rgba($black, .2);
+// Color Palette Modifiers
+// UI Colors
+
+$ui-colors: (
+        default : $fountain-blue,
+        success : $teal,
+        error : $copper_rust,
+        warning : $flamingo,
+        info : $cream_can,
+        accent: $azure
+);
+$color-palettes: (
+        grey: (
+                xx-light : lighten($grey, 45%),
+                x-light : lighten($grey, 35%),
+                light : lighten($grey, 12%),
+                base : $grey,
+                dark : darken($grey, 8%),
+                x-dark : darken($grey, 16%)
+        ),
+        black: (
+                light : lighten($black, 10%),
+                base : $black,
+                dark : darken($black, 10%)
+        ),
+        orange:(
+                light : lighten($flamingo, 10%),
+                base : $flamingo,
+                dark : darken($flamingo, 10%)
+        ),
+        green:(
+                light : lighten($teal, 10%),
+                base : $teal,
+                dark : darken($teal, 10%)
+        )
+);
+
+@function palette($palette, $shade: 'base') {
+  @return map-get(map-get($color-palettes, $palette), $shade);
+}
+
+p {
+  font-weight: 400;
+}
+
+.post {
+  &__excerpt {
+    h1, h2, h3, h4, h5, h6 {
+      font-size: 110%;
+    }
+  }
+}
+
+.post-content {
+  &__text {
+    a:not([class]) {
+      color: map_get($ui-colors, success)
+    }
+    ul {
+      list-style: none;
+      padding: 5px 5px 5px 25px;
+      margin-bottom: 20px;
+      & li:before {
+        font-family: 'icomoon';
+        content: "\e86a"+" ";
+      }
+    }
+    p{
+      margin-top: 20px;
+    }
+    h5{
+      margin-top: 8px;
+    }
+  }
+}
+
+.post-list {
+  &__item {
+    border-color: palette(grey, 'xx-light');
+    p {
+      margin: 0;
+    }
+    &:hover {
+      background: palette(grey, 'xx-light');
+    }
+
+  }
+}
+
+.post-related {
+  &__table {
+    tbody {
+      border: none;
+      tr:nth-child(even) {
+        background: none;
+      }
+    }
+  }
+}
+
+[data-magellan] {
+  a {
+    &:hover, &:focus, &.active {
+      background: palette(grey, 'xx-light');
+      color: map_get($ui-colors, success);
+    }
+  }
+}

@@ -1,0 +1,25 @@
+<header class="header">
+  <div class="header__top">
+    <div class="grid pos-r">
+      <div class="grid__left w_m-20 w_l-30">
+        <a class="header__logo show-for-medium" href="/"><img src="{{ '/img/icons/logo_student.svg' | prepend: site.baseurl }}" alt=""/></a>
+        <a class="header__logo show-for-small-only" href="/"><img src="{{ '/img/icons/icon.svg' | prepend: site.url }}" alt=""/></a>
+      </div>
+      <nav class="header__nav--bottom">
+        <ul class="nav-list" id="main-menu">
+          {% for page_item in site.pages %}
+          {% if page_item.title %}
+          <!-- Compare the page page_item.url to the page URL -->
+          <li {% if page.url == page_item.url %} class="nav-list__item--active nav-list__item" {% else %}
+              class="nav-list__item" {% endif %}>
+            <a href="{{ page_item.url | prepend: site.baseurl }}">{{ page_item.title }}</a>
+          </li>
+          {% endif %}
+
+          {% endfor %}
+        </ul>
+
+      </nav>
+    </div>
+  </div>
+</header>

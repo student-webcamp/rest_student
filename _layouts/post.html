@@ -3,13 +3,35 @@ layout: default
 ---
 <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
-  <header class="post-header">
-    <h1 class="post-title" itemprop="name headline">{{ page.title }}</h1>
-    <p class="post-meta"><time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</time>{% if page.author %} • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author }}</span></span>{% endif %}</p>
-  </header>
+    <header class="post-header">
+        <div class="page__header course">
+            <div class="row">
+                <div class="medium-6 columns end">
+                    <h1 class="page__title text-capitalize" itemprop="name headline">{{ page.title }}</h1>
+                </div>
+            </div>
+        </div>
+    </header>
 
-  <div class="post-content" itemprop="articleBody">
-    {{ content }}
-  </div>
+    <div class="post-meta row">
+        <div class="medium-9 columns">
+            <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+                {{ page.date | date: "%b %-d, %Y"}}
+            </time>
+            {% if page.author %} • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span
+                itemprop="name">by <a href="{{page.author_linkedin}}">{{ page.author }}</a></span></span>{% endif %}
+        </div>
+        <div class="medium-3 columns">
+            <div style="max-width: 100%; overflow: hidden;"
+                 class="fb-like"
+                 data-share="true"
+                 data-width="450"
+                 data-show-faces="true">
+            </div>
+        </div>
+    </div>
+    <div class="post-content" itemprop="articleBody">
+        {{ content }}
+    </div>
 
 </article>

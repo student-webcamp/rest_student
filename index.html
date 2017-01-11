@@ -1,23 +1,60 @@
 ---
 layout: default
 ---
+<div class="show-for-medium">
+    <div class="slider__content clearfix">
+        <ul class="slides">
+            <li class="slide active" style="background-image: url({{'/img/backgrounds/book_man.jpg' | prepend: site.url}})">
+                <div class="gradient">
+                    <div class="grid">
+                        <div class="slide__content grid__left w_m-70 w_l-50 centered">
+                            {% assign latest = site.posts.first%}
 
-<div class="home">
+                            <h3>{{latest.title}}</h3>
 
-    <h1 class="page-heading">Posts</h1>
-
-    <ul class="post-list">
-        {% for post in site.posts %}
-        <li>
-            <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
-
-            <h2>
-                <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title | escape }}</a>
-            </h2>
-        </li>
-        {% endfor %}
-    </ul>
-
-    <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
-
+                            <div class="post__excerpt">{{ latest.content | truncatewords: 25 }}</div>
+                            <a href="{{latest.url | prepend: site.baseurl}}"
+                               class="btn-more position-right">Подробнее</a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
 </div>
+<article class="post">
+    {% for category in site.categories %}
+    <div class="row mb-50">
+        {% assign category_name = category.first%}
+        <p class="text--success">{{ category_name }}</p>
+        {% for post in site.categories[category_name] %}
+        <a class="" href="{{post.url | prepend: site.baseurl}}">
+            <div>
+                <h4>{{ post.title }}</h4>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+    {% endfor %}<!--list categories-->
+
+
+    <div class="panel--success mb-50">
+        <div class="divider grid">
+            <div class="divider__text--right">
+                <h2><span class="highlight--white">Новое на REST Student</span></h2>
+            </div>
+        </div>
+    </div><!-- New -->
+
+    <div class="row mb-50">
+        {% for post in site.posts limit:5 %}
+        <a class="" href="{{post.url | prepend: site.baseurl}}">
+            <div>
+                <h4>{{ post.title }}</h4>
+
+                <div class="post__excerpt">{{ post.excerpt }}</div>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</article>

@@ -1,13 +1,26 @@
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% if page.description %}
+    {% assign _description = page.description %}
+    {% else %}
+    {% assign _description = page.content | strip_html | strip_newlines | truncatewords: 25 %}
+    {% endif %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
-  <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
-  <link rel="stylesheet" href="{{ '/css/webcamp.min.css' | prepend: site.url }}">
-  <link rel="stylesheet" href="{{ '/css/main.css' | prepend: site.baseurl }}">
-  <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
-  <!--<script src="{{ '/libs/highlight/highlight.pack.js' | prepend: site.baseurl }}"></script>-->
-  <!--<script>hljs.initHighlightingOnLoad();</script>-->
+    <title>{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
+    <meta name="description"
+          content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+    <meta property="fb:app_id" content="177957075933950" />
+    <meta property="og:url" content="{{site.url}}{{ page.url }}" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="{{ page.title }}" />
+    <meta property="og:description" content="{{ _description }}" />
+    <meta property="og:image" content="{{ page.fbimg }}" />
+    <link rel="stylesheet" href="{{ '/libs/highlight/styles/agate.css' | prepend: site.baseurl }}"/>
+    <link rel="stylesheet" href="{{ '/css/webcamp.min.css' | prepend: site.url }}">
+    <link rel="stylesheet" href="{{ '/css/main.css' | prepend: site.baseurl }}">
+    <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+    <script src="{{ '/libs/highlight/highlight.pack.js' | prepend: site.baseurl }}"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
 </head>

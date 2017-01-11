@@ -19,3 +19,4 @@ github_username:  student-webcamp
 
 # Build settings
 markdown: kramdown
+permalink: /:title

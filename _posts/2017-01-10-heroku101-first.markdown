@@ -1,0 +1,11 @@
+---
+layout: post
+title:  "Heroku | Первое знакомство"
+date:   2017-01-10 09:59:47 +0200
+author: Zhukova
+author_linkedin: https://ua.linkedin.com/in/helenzhukova
+categories: Heroku101
+---
+<div class="responsive-embed widescreen">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/5WbwxYrhKMw" frameborder="0" allowfullscreen></iframe>
+</div>

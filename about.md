@@ -1,15 +1,17 @@
 ---
 layout: page
-title: About
+title: Кто мы
 permalink: /about/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](http://jekyllrb.com/)
+# Мы - команда курсов программирования WebCamp
 
-You can find the source code for the Jekyll new theme at:
-{% include icon-github.html username="jekyll" %} /
-[minima](https://github.com/jekyll/minima)
+Мы делаем ресурс [Student Webcamp]({{site.baseurl}}) не только для наших студентов, но для всех, кому интересна тема программирования.
 
-You can find the source code for Jekyll at
-{% include icon-github.html username="jekyll" %} /
-[jekyll](https://github.com/jekyll/jekyll)
+Эта часть ресурса посвящена теме REST приложения на NodeJS.
+
+
+
+
+
+

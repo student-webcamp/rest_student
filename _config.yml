@@ -19,4 +19,3 @@ github_username:  student-webcamp
 
 # Build settings
 markdown: kramdown
-source: dist

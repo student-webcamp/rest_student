@@ -47,7 +47,8 @@ module.exports = {
         }),
 
         new HtmlWebpackPlugin({
-            template: 'src/index.html'
+            filename: '../_layouts/default.html',
+            template: 'src/default.html'
         })
     ]
 };

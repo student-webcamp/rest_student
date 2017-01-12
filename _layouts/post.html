@@ -30,8 +30,52 @@ layout: default
             </div>
         </div>
     </div>
-    <div class="post-content" itemprop="articleBody">
-        {{ content }}
+    <div class="post-content row" itemprop="articleBody">
+        <div class="medium-9 columns post-content__text" id="post_content">
+            {{ content }}
+        </div>
+        <div class="medium-3 columns" data-sticky-container>
+
+            <nav class="columns sticky" data-sticky data-anchor="post_content" data-btm-anchor="subscribe:bottom"
+                 data-sticky-on="medium">
+                <ul class="vertical menu data-magellan mb-50" data-magellan>
+                    <li>Содержание:</li>
+                </ul>
+
+
+                {% if site.related_posts.first %}
+                <div class="callout">
+                    <div class="page__info">
+                        <p class="clearfix">
+                            <span class="page__info--l icon-sir icons--warning"></span>
+                            <span class="page__info--ml page__info--last text--success">Интересное:</span>
+                        </p>
+                    </div>
+                    <table class="post-related__table">
+                        {% for related_post in site.related_posts %}
+                        <tr>
+                            <td>
+                                {% if related_post.tags.first %}
+                                <span class="outline--sm outline--success">{{related_post.tags.first}}</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        <tr class="post-list__item border-bottom">
+                            <td>
+                                <a href="{{related_post.url}}">
+                                    <p class="p-5">
+                                        {{related_post.title}}
+                                    </p>
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+                {% endif %}
+
+            </nav>
+        </div>
     </div>
 
 </article>

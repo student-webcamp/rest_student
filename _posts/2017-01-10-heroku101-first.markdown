@@ -6,6 +6,178 @@ author: Zhukova
 author_linkedin: https://ua.linkedin.com/in/helenzhukova
 categories: Heroku101
 ---
-<div class="responsive-embed widescreen">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/5WbwxYrhKMw" frameborder="0" allowfullscreen></iframe>
+
+# Heroku 101. Знакомство с сервисом Heroku
+
+Мы, в WebCamp, решили вынести свое API в отдельное RESTfull приложение, поменять PHP на NodeJS и использовать сервис Heroku как самый удобный и простой способ серверного обслуживания для приложения. Одновременно, мы решили поделится с вами всеми деталями этого процесса, начиная с создания аккаунта на Heroku.
+
+В двух словах, Heroku это облачная платформа, которая позволяет пользователям создавать, доставлять, управлять и масштабировать приложения.
+Они справедливо считают себя самым быстрым путем от идеи к URL, минуя все эти головные боли построения инфраструктуры.
+В этом видео мы покажем вам как создать первое стартовое приложение на NodeJS и отправить его на сервер Heroku.
+
+<ol class="tabs" data-tabs id="video-tabs">
+  <li class="tabs-title is-active"><a href="#panel1" aria-selected="true">MAC OS</a></li>
+  <li class="tabs-title"><a href="#panel2">WIN</a></li>
+</ol>
+
+<div class="tabs-content" data-tabs-content="video-tabs">
+  <div class="tabs-panel is-active" id="panel1">
+    <div class="responsive-embed widescreen">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/5WbwxYrhKMw" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </div>
+  <div class="tabs-panel" id="panel2">
+    <div class="responsive-embed widescreen">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/lciL7rF57nk" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </div>
 </div>
+
+### <span class="icon-homecode" id="one" data-magellan-target="one"></span> Шаг 1. Создать аккаунт на Heroku
+
+Создат аккаунт на Heroku очень просто, идем на сайт https://www.heroku.com/ и жмем на кнопку Sign up
+
+![Signup](/rest_student/img/heroku-signup.png)
+
+Заполняем форму, тут нам надо выбрать NodeJS, как язык нашего приложения.
+
+![select language](/rest_student/img/heroku-select-language.png)
+
+На почту нам придет письмо со ссылкой для установки пароля. Мы установим новый пароль и попадаем на страницу создания первого приложения. Здесь нам предлагается выбрать стартовую инструкцию для доступных приложений, мы выбираем NodeJS.
+
+![select app](/rest_student/img/heroku-select-app.png)
+
+### <span class="icon-homecode" id="two" data-magellan-target="two"></span> Шаг 2. Установить CLI для Heroku
+
+Мы попали на страницу с инструкциями по установке приложения, пропускаем приветствие и попадаем на шаг Set up, где, из выпадающего списка выбираем ту операционную систему, которая нам подходит.
+
+![select OS](/rest_student/img/heroku-select-os.png)
+
+Запускаем установщик, и нажимаем кнопку Next до тех пор, пока не завешится заргузка.
+
+### <span class="icon-homecode" id="three" data-magellan-target="three"></span> Шаг 3. Зайти в систему через коммандную строку
+
+Теперь у нас есть новая комманда в терминале (коммандной строке) `heroku` мы будем использовать ее каждый раз, когда захотим обраться к серверу. Первым делом, нам необходимо залогиниться.
+
+```bash
+$ heroku login
+Enter your Heroku credentials.
+Email: student@webcamp.com.ua
+Password:
+```
+
+### <span class="icon-homecode" id="four" data-magellan-target="four"></span> Шаг 4. Проверить версии необходимых програм
+
+Перед тем как продолжить, было бы правильно проверить версии необходимых программ: node, npm, git, для этого мы последовательно выполняем комманды:
+
+
+```bash
+$node -v
+v6.9.1
+$npm -v
+3.10.8
+$git --version
+git version 2.10.1 (Apple Git-78)
+```
+
+### <span class="icon-homecode" id="five" data-magellan-target="five"></span> Шаг 5. Клониеруем код
+
+Теперь нам нужен код, мы еще не писали собственного кода, поэтому, для начала берем код, приготовленным Heroku специально для использования при начальной установке. Первой коммандой мы клонируем проект из реппозитория, втрой - переходим в папку с проектом.
+
+```bash
+git clone https://github.com/heroku/node-js-getting-started.git
+cd node-js-getting-started
+```
+
+### <span class="icon-homecode" id="six" data-magellan-target="six"></span> Шаг 6. Создаем приложение
+
+Теперь перейдем к делу: создадим приложение на сервере с помощью комманды 
+
+```bash
+heroku create
+```
+
+![heroku create](/rest_student/img/heroku-create-bash.png)
+
+Чтобы посмотреть что получилось, выдаем комманду 
+
+```bash
+heroku open
+```
+
+которая открывает браузер с адресом `https://shielded-wave-37259.herokuapp.com/` с нашим новым приложением, где мы должны увидеть такую страницу
+
+![heroku open1](/rest_student/img/heroku-open1.png)
+
+
+### <span class="icon-homecode" id="seven" data-magellan-target="seven"></span> Шаг 7. Отправляем код на сервер
+
+Такая страница означает, что на сервере нет нашего кода и нам надо его туда добавить коммандой 
+
+```bash
+git push heroku master
+```
+
+![heroku git-push](/rest_student/img/heroku-git-push.png)
+
+Тепер можем повторить
+
+```bash
+heroku open
+```
+
+На этот раз мы увидим совершенно другую картину
+
+![heroku app](/rest_student/img/heroku-app.png)
+
+### <span class="icon-homecode" id="eight" data-magellan-target="eight"></span> Шаг 8. Посмотреть логи сервера
+
+Знать что происходит на сервере очень важно, чтобы узнать логи сервера есть комманда
+
+```bash
+heroku logs --tail
+```
+
+которая покажет нам последние сообщения от сервера
+
+![heroku logs](/rest_student/img/heroku-logs.png)
+
+### <span class="icon-homecode" id="nine" data-magellan-target="nine"></span> Шаг 9. Посмотреть в Procfile
+
+Heroku использует специалный файл `Procfile` (это название, расширения нет), для того чтобы запустить указанную вами стартовую комманду для вашего приложения. В случае нашего стартового приложения это комманда
+
+```
+web: node index.js
+```
+
+![heroku procfile](/rest_student/img/heroku-procfile.png)
+
+### <span class="icon-homecode" id="ten" data-magellan-target="ten"></span> Шаг 10. Установить зависимости
+
+Теперь мы хотим развернуть наше приложение локально, для начла нам надо установить все библиотеки и модули от которых зависит наша программа.  
+А сами эти зависимости описаны в файле `package.json`
+
+![heroku package-json](/rest_student/img/heroku-package-json.png)
+
+Чтобы скачать эти модули, выдаем комманду
+
+```bash
+npm install
+```
+
+![heroku install](/rest_student/img/heroku-install.png)
+
+### <span class="icon-homecode" id="eleven" data-magellan-target="eleven"></span> Шаг 11. Запустить локальный сервер
+
+Теперь мы готовы запустить приложние локально с коммандой 
+
+```
+heroku local web
+```
+
+![heroku local](/rest_student/img/heroku-local.png)
+
+Теперь мы можем наблюдать наше приложение на локальном серевере по адресу `http://localhost:5000` и оно выглидит аналогично тому, что мы виделе на сервере
+ 
+ 
+![heroku localhost](/rest_student/img/heroku-localhost.png)

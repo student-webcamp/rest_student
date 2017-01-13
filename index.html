@@ -27,7 +27,7 @@ layout: default
     <div class="row mb-50">
         {% assign category_name = category.first%}
         <p class="text--success">{{ category_name }}</p>
-        {% for post in site.categories[category_name] %}
+        {% for post in site.categories[category_name] reversed %}
         <a class="" href="{{post.url | prepend: site.baseurl}}">
             <div>
                 <h4>{{ post.title }}</h4>

@@ -89,11 +89,11 @@ npm install --save --save-exact cool-ascii-faces
 
 ![indexjs cool](/rest_student/img/indexjs-cool.png)
 
-Запустим локалный сервер
+Запустим локальный сервер
  
- ```
- heroku local
- ```
+```
+heroku local
+```
  
  И пойдем на [http://localhost:5000/cool](http://localhost:5000/cool) и увидим няшную рожицу, например  ASCII Гитлера (потому что разве Гитлер не няшя?)
 

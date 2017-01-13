@@ -1,7 +1,12 @@
 <div class="row mb-50">
     <div class="medium-12 columns">
-        Вы можете узнать больше по теме <strong>"{{page.title}}"</strong> и в сфере <strong>{{page.tags | join: " и
-        "}}</strong> на курсах <a
+        Вы можете узнать больше по теме <strong>"{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title |
+        escape }}{% endif %}"</strong>
+        {% if page.title %}
+        <span>и в сфере <strong>{{page.tags | join: " и "}}</strong>
+        </span>
+        {% endif %}
+        на курсах <a
             href="http://www.webcamp.com.ua/">WebCamp</a>
         <div class="page__info">
             <p class="clearfix">
@@ -11,6 +16,11 @@
             </p>
         </div>
         <ul class="list-nostyle post-list">
+            <li class="post-list__item border-bottom">
+                <a href="http://www.webcamp.com.ua/courses">
+                    <p class="p-5">Все курсы программирования и цены</p>
+                </a>
+            </li>
             {% assign courses = page.related_courses | split: " " %}
             {% for related_course in courses %}
             <li class="post-list__item border-bottom">

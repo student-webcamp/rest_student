@@ -74,4 +74,64 @@ heroku local web
 
 ### <span class="icon-homecode" id="twelve" data-magellan-target="twelve"></span> Шаг 12. Внести локальные изменения
 
+Мы добавим немного кода в локальный проект. Сначала установим новые зависимости
+
+```bash
+npm install --save --save-exact cool-ascii-faces
+```
+
+![npm cool](/rest_student/img/npm-cool.png)
+
+Теперь можно добавить код в файл `index.js`
+
+<p data-height="472" data-theme-id="0" data-slug-hash="xgOEqN" data-default-tab="js" data-user="webcamp" data-embed-version="2" data-pen-title="xgOEqN" class="codepen">See the Pen <a href="http://codepen.io/webcamp/pen/xgOEqN/">xgOEqN</a> by webcamp (<a href="http://codepen.io/webcamp">@webcamp</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+![indexjs cool](/rest_student/img/indexjs-cool.png)
+
+Запустим локалный сервер
+ 
+ ```
+ heroku local
+ ```
+ 
+ И пойдем на [http://localhost:5000/cool](http://localhost:5000/cool) и увидим няшную рожицу, например  ASCII Гитлера (потому что разве Гитлер не няшя?)
+
+![localhost cool](/rest_student/img/localhost-cool.png)
+
+Теперь отправим изменения на сервер, для этого надо всего лишь следать обычный git commit:
+
+```
+git add .
+git commit -m "Cool"
+git push heroku master
+```
+
+![git cool](/rest_student/img/git-cool.png)
+
+А теперь можно порадоваться новому коду на сервере
+
+```
+heroku open cool
+```
+
+
 ### <span class="icon-homecode" id="thirteen" data-magellan-target="thirteen"></span> Шаг 13. Установить addon
+
+Addon - это дополнителная возможность для нашего сервера, в далнейшем мы будем исползовать его для установки базы данных, а для начала сделаем установку первого addon - papertail. На первый раз он потребует верификации аккаунта, что значит, вам надо будет отдать ему данные кредитной карточки (капиталисты проклятые)
+
+```
+heroku addons:create papertrail
+```
+
+![heroku addon](/rest_student/img/heroku-addon.png)
+
+Чтобы увидеть addon в действии, выдаем комманду
+
+```
+heroku addons:open papertrail
+```
+
+Чтобы увидеть логи, сделайте любое действие на сервере, можно просто зайти на страницу приолжения
+
+![papertail](/rest_student/img/papertail.png)

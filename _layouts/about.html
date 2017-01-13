@@ -1,0 +1,75 @@
+---
+layout: default
+---
+<article class="post">
+
+    <header class="post-header">
+        <div class="page__header course">
+            <div class="row">
+                <div class="medium-6 columns end">
+                    <h1 class="page__title text-capitalize" itemprop="name headline">{{ page.title }}</h1>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="post-content row">
+        <div class="medium-7 columns post-content__text" id="post_content">
+            {{ content }}
+        </div>
+        <div class="medium-5 columns">
+            <div class="callout">
+                <div class="page__info">
+                    <p class="clearfix">
+                        <span class="page__info--l icon-flypaper contacts__icons"></span>
+                        <span class="page__info--ml page__info--last text--success">Наши адреса:</span>
+                    </p>
+                </div>
+                <table class="post-related__table">
+                    <tr class="post-list__item border-bottom">
+                        <td>
+                            <p class="p-5">
+                                <a href="https://www.webcamp.com.ua">Курсы программирования WebCamp
+                                    <br>
+                                    <small>(Здесь мы встречаемся вживую)</small>
+                                </a>
+                            </p>
+                        </td>
+                    </tr>
+                    <tr class="post-list__item border-bottom">
+                        <td>
+                            <p class="p-5">
+                                <a href="https://www.facebook.com/webcamp.kiev/">Facebook WebCamp
+                                    <br>
+                                    <small>(Здесь мы отвечаем на все вопросы)</small>
+                                </a>
+                            </p>
+                        </td>
+                    </tr>
+                    <tr class="post-list__item border-bottom">
+                        <td>
+                            <p class="p-5">
+                                <a href="{{site.url}}">Student WebCamp
+                                    <br>
+                                    <small>(Здесь все наши учебные материалы и блог)</small>
+                                </a>
+                            </p>
+                        </td>
+                    </tr>
+                    <tr class="post-list__item border-bottom">
+                        <td>
+                            <p class="p-5">
+                                <a href="https://www.youtube.com/user/webcampkiev">YouTube WebCamp
+                                    <br>
+                                    <small>(Здесь все наши видео)</small>
+                                </a>
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</article>
+{% include mailchimp.html %}

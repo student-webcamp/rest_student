@@ -4,6 +4,8 @@ title:  "Heroku | Первое знакомство"
 date:   2017-01-10 09:59:47 +0200
 author: Zhukova
 author_linkedin: https://ua.linkedin.com/in/helenzhukova
+tags: Heroku
+related_courses: javascript
 categories: Heroku101
 ---
 

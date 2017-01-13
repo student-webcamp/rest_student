@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg width="297px" height="89px" viewBox="0 0 297 89" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 39.1 (31720) - http://www.bohemiancoding.com/sketch -->
-    <title>js_student</title>
+<svg width="297px" height="100px" viewBox="0 0 297 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41 (35326) - http://www.bohemiancoding.com/sketch -->
+    <title>js_student copy</title>
     <desc>Created with Sketch.</desc>
     <defs>
         <linearGradient x1="-0.202666667%" y1="50.4171209%" x2="99.7804444%" y2="50.4171209%" id="linearGradient-1">
@@ -71,8 +71,8 @@
         </linearGradient>
     </defs>
     <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Artboard" transform="translate(-448.000000, -140.000000)">
-            <g id="js_student" transform="translate(448.000000, 139.000000)">
+        <g id="Artboard" transform="translate(-448.000000, -389.000000)">
+            <g id="js_student-copy" transform="translate(448.000000, 388.000000)">
                 <g id="webcamp" transform="translate(110.000000, 14.000000)">
                     <polygon id="Shape" fill="#EC674B" points="19.8936696 9.43105882 11.8625551 30.6978824 0.440726872 1.08211765 2.5463304 1.08211765 11.8625551 25.2041176 19.8936696 3.97270588 27.8539383 25.2041176 37.2410088 1.08211765 39.3466123 1.08211765 27.8539383 30.6978824"></polygon>
                     <path d="M53.1928502,28.3425882 C51.6581322,29.8051765 49.6241982,30.6970588 47.1610705,30.6970588 C41.6639295,30.6970588 37.2022907,26.2368235 37.2022907,20.7422353 C37.2022907,15.246 41.6639295,10.7149412 47.1610705,10.7149412 C52.6573877,10.7149412 56.1560176,15.246 56.1560176,20.7422353 C56.1560176,21.0625882 56.1560176,21.4191765 56.1197709,21.7411765 L39.2370485,21.7411765 C39.7362643,25.6661176 43.0915551,28.7345882 47.1610705,28.7345882 C48.9808194,28.7345882 50.587207,28.1284706 51.8014714,26.9862353 L53.1928502,28.3425882 L53.1928502,28.3425882 Z M54.1566828,19.7795294 C53.9779207,17.9232941 53.3361894,16.2103529 52.2644405,14.9972941 C50.9793304,13.4984706 49.2304273,12.6782353 47.1610705,12.6782353 C43.0915551,12.6782353 39.7008414,15.8175294 39.2370485,19.7795294 L54.1566828,19.7795294 L54.1566828,19.7795294 Z" id="Shape" fill="#EC674B"></path>
@@ -110,9 +110,9 @@
                     <path d="M52.8,15 C52.8,15 70.2,24.8 78.4,29.8 C85.8,34.4 85.2,40.6 85.2,40.6 C85.2,40.6 85,70.8 85,74.8 C86.4,75.6 88,76.6 88,76.6 L88,40 C88,31.8 80.8,28 80.8,28 C80.8,28 63,17.4 55.2,13 C50.2,10.2 49.6,10.2 49.6,10.2 L49.6,13.2 C51,13.8 52.8,15 52.8,15 L52.8,15 Z" id="Shape" fill="url(#linearGradient-13)"></path>
                     <path d="M79.4,44.2 C79.4,44.2 79.6,67.8 79.4,71.2 C80.8,72 82.4,73 82.4,73 L82.4,43.6 C82.4,35.4 75.2,31.6 75.2,31.6 C75.2,31.6 57.4,21 49.6,16.6 L49.6,20.2 C49.6,20.2 64.4,28.4 72.6,33.4 C80.2,38 79.4,44.2 79.4,44.2 L79.4,44.2 Z" id="Shape" fill="url(#linearGradient-14)"></path>
                 </g>
-                <text id="JavaScript-student" font-family="PTMono-Regular, PT Mono" font-size="20" font-weight="normal" fill="#F36C36">
-                    <tspan x="177" y="65">JavaScript </tspan>
-                    <tspan x="213" y="88">student</tspan>
+                <text id="REST-NodeJS-student" font-family="PTMono-Regular, PT Mono" font-size="20" font-weight="normal" fill="#F36C36">
+                    <tspan x="165" y="77">REST NodeJS </tspan>
+                    <tspan x="213" y="100">student</tspan>
                 </text>
             </g>
         </g>

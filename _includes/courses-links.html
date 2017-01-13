@@ -1,0 +1,24 @@
+<div class="row mb-50">
+    <div class="medium-12 columns">
+        Вы можете узнать больше по теме <strong>"{{page.title}}"</strong> и в сфере <strong>{{page.tags | join: " и
+        "}}</strong> на курсах <a
+            href="http://www.webcamp.com.ua/">WebCamp</a>
+        <div class="page__info">
+            <p class="clearfix">
+                <span class="page__info--l icon-graduation-hat icons--warning"></span>
+                <span class="page__info--ml text--success">Курсы WebCamp</span>
+                <a href="http://www.webcamp.com.ua/" class="page__info--last text--warning">Узнать больше</a>
+            </p>
+        </div>
+        <ul class="list-nostyle post-list">
+            {% assign courses = page.related_courses | split: " " %}
+            {% for related_course in courses %}
+            <li class="post-list__item border-bottom">
+                <a href="http://www.webcamp.com.ua/courses/{{related_course}}">
+                    <p class="p-5">{{related_course | replace: "_", " " | capitalize }}</p>
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>

@@ -10,6 +10,8 @@ categories: Heroku101
 
 # Heroku 101. Знакомство с сервисом Heroku
 
+Вторая часть на [Heroku. Продолжение](/rest_student/heroku101-second)
+
 Мы, в WebCamp, решили вынести свое API в отдельное RESTfull приложение, поменять PHP на NodeJS и использовать сервис Heroku как самый удобный и простой способ серверного обслуживания для приложения. Одновременно, мы решили поделится с вами всеми деталями этого процесса, начиная с создания аккаунта на Heroku.
 
 В двух словах, Heroku это облачная платформа, которая позволяет пользователям создавать, доставлять, управлять и масштабировать приложения.
@@ -36,7 +38,7 @@ categories: Heroku101
 
 ### <span class="icon-homecode" id="one" data-magellan-target="one"></span> Шаг 1. Создать аккаунт на Heroku
 
-Создат аккаунт на Heroku очень просто, идем на сайт https://www.heroku.com/ и жмем на кнопку Sign up
+Создать аккаунт на Heroku очень просто, идем на сайт https://www.heroku.com/ и жмем на кнопку Sign up
 
 ![Signup](/rest_student/img/heroku-signup.png)
 
@@ -130,55 +132,3 @@ heroku open
 На этот раз мы увидим совершенно другую картину
 
 ![heroku app](/rest_student/img/heroku-app.png)
-
-### <span class="icon-homecode" id="eight" data-magellan-target="eight"></span> Шаг 8. Посмотреть логи сервера
-
-Знать что происходит на сервере очень важно, чтобы узнать логи сервера есть комманда
-
-```bash
-heroku logs --tail
-```
-
-которая покажет нам последние сообщения от сервера
-
-![heroku logs](/rest_student/img/heroku-logs.png)
-
-### <span class="icon-homecode" id="nine" data-magellan-target="nine"></span> Шаг 9. Посмотреть в Procfile
-
-Heroku использует специалный файл `Procfile` (это название, расширения нет), для того чтобы запустить указанную вами стартовую комманду для вашего приложения. В случае нашего стартового приложения это комманда
-
-```
-web: node index.js
-```
-
-![heroku procfile](/rest_student/img/heroku-procfile.png)
-
-### <span class="icon-homecode" id="ten" data-magellan-target="ten"></span> Шаг 10. Установить зависимости
-
-Теперь мы хотим развернуть наше приложение локально, для начла нам надо установить все библиотеки и модули от которых зависит наша программа.  
-А сами эти зависимости описаны в файле `package.json`
-
-![heroku package-json](/rest_student/img/heroku-package-json.png)
-
-Чтобы скачать эти модули, выдаем комманду
-
-```bash
-npm install
-```
-
-![heroku install](/rest_student/img/heroku-install.png)
-
-### <span class="icon-homecode" id="eleven" data-magellan-target="eleven"></span> Шаг 11. Запустить локальный сервер
-
-Теперь мы готовы запустить приложние локально с коммандой 
-
-```
-heroku local web
-```
-
-![heroku local](/rest_student/img/heroku-local.png)
-
-Теперь мы можем наблюдать наше приложение на локальном серевере по адресу `http://localhost:5000` и оно выглидит аналогично тому, что мы виделе на сервере
- 
- 
-![heroku localhost](/rest_student/img/heroku-localhost.png)

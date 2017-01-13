@@ -62,7 +62,7 @@ layout: default
                         </tr>
                         <tr class="post-list__item border-bottom">
                             <td>
-                                <a href="{{related_post.url}}">
+                                <a href="{{related_post.url | prepend: site.baseurl}}">
                                     <p class="p-5">
                                         {{related_post.title}}
                                     </p>

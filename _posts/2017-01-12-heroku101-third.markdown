@@ -1,0 +1,196 @@
+---
+layout: post
+title:  "Heroku | Третья часть"
+date:   2017-01-15 09:59:47 +0200
+author: Zhukova
+author_linkedin: https://ua.linkedin.com/in/helenzhukova
+tags: Heroku
+categories: Heroku101
+---
+
+# Heroku 101. Заключительная часть знакомства с сервисом Heroku
+
+Мы, продолжаем проходить инструкцию по настройке приложения NodeJS на облачном сервисе Heroku. 
+
+Первая часть - [Heroku. Первое знакомство](/rest_student/heroku101-first)
+
+Вторая часть - [Heroku. Продолжение знакомства](/rest_student/heroku101-second)
+
+  <div class="tabs-panel is-active" id="panel">
+    <div class="responsive-embed widescreen">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/9XhzwaViAUI" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </div>
+
+### <span class="icon-homecode" id="fourteen" data-magellan-target="fourteen"></span> Шаг 14. Конфигурационные переменные
+
+В NodeJS переменные, которые необходимы для настройки системы хранятся в специальном объекте `process.env`, например, мы можем сделать отдельный путь сервере `/times` и исползовать переменную `process.env.TIMES`
+
+
+```javascript
+app.get('/times', function(request, response) {
+    var result = ''
+    var times = process.env.TIMES || 5
+    for (i=0; i < times; i++)
+      result += i + ' ';
+  response.send(result);
+});
+```
+
+![config vars](/rest_student/img/config-vars.png)
+
+Heroku исползует специалный файл `.env` для хранения конфигурационных переменных, так чтобы поле `TIMES` попало в объект `process.env` мы делаем соответствующую запись в файл `.env` 
+
+> обратите внимание, вокруг знака равно НЕ должно быть пробелов
+
+```
+TIMES=42
+```
+![env times](/rest_student/img/env-times.png)
+
+Тамике образом мы настроили локальную конфигурационную переменную, чтобы установить такую на сервере, необходимо выдат комманду
+
+```
+heroku config:set TIMES=2
+```
+
+Чтобы посмотреть, какие переменные есть в окружении сервера, выдаем комманду
+
+```
+heroku config
+```
+
+![heroku config](/rest_student/img/heroku-config.png)
+
+
+### <span class="icon-homecode" id="fifteen" data-magellan-target="fifteen"></span> Шаг 15. Подключить удаленную базу данных
+
+Тепер мы готовы к подключению удаленной базы данных к нашему серверу, с Heroku это просто - надо добавить add-on через комманду
+
+```
+heroku addons:create heroku-postgresql:hobby-dev
+```
+
+![heroku db](/rest_student/img/heroku-db.png)
+
+После выполненея этой комманды на сервере автоматически появится конфигурационная переменная `DATABASE_URL`, которую мы будем исползовать в коде для подключения к базе данных
+
+```bash
+heroku config
+```
+
+![heroku db-url](/rest_student/img/heroku-db-url.png)
+
+Теперь восползуемся модулем `pg`, который упростить задачу подлючения к базе данных, мы его скачаем из `npm` одновременно обновив файл `package.json` с исползованием флага `--save` в комманде
+
+```
+npm install pg --save
+```
+
+![package pg](/rest_student/img/package-pg.png)
+
+Подключим модуль и добавим код, который установит подключение к базе данных `pg.connect(process.env.DATABASE_URL, function(err, client, done) {...})`, как только подключение будет установлено, нам будет доступен объект `client`, который будет выполнят запрос в базу данных `client.query('SELECT * FROM test_table', function(err, result) {...}`. Полученный результат мы отправим в браузер через рендер заранее подготовленной страницы `response.render('pages/db', {results: result.rows} )`.
+
+```javascript
+var pg = require('pg');
+
+app.get('/db', function (request, response) {
+  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+    client.query('SELECT * FROM test_table', function(err, result) {
+      done();
+      if (err)
+       { console.error(err); response.send("Error " + err); }
+      else
+       { response.render('pages/db', {results: result.rows} ); }
+    });
+  });
+});
+```
+
+![index pg](/rest_student/img/index-pg.png)
+
+Теперь мы можем добавить данных в базу:
+- подключимся к серверу Postgres `heroku pg:psql`
+- создадим тестовую таблицу с полями id и name`create table test_table (id integer, name text)`
+- создадим запись в таблице `insert into test_table values (1, 'hello database')`
+- выйдем `\q`
+
+```bash
+heroku pg:psql
+...
+create table test_table (id integer, name text);
+
+insert into test_table values (1, 'hello database');
+
+\q
+```
+
+![heroku psql](/rest_student/img/heroku-psql.png)
+
+Теперь отправим новый код на серевер, мы делаем это через коммит в репозиторий heroku
+
+```bash
+git add .
+git commit -m 'database'
+git push heroku master
+```
+
+![db commit](/rest_student/img/db-commit.png)
+
+Можем посмотреть на резултат
+
+```
+heroku open db
+```
+
+![heroku open db](/rest_student/img/heroku-open-db.png)
+
+### <span class="icon-homecode" id="sixteen" data-magellan-target="sixteen"></span> Шаг 16. Подключить локальную базу данных 
+
+#### MAC
+
+Чтобы настроить Postgres на MacOS перейдем на страницу загрузки приложения [Postgres.app](http://postgresapp.com/)
+
+![postgres download](/rest_student/img/postgres-download.png)
+
+![postgres app](/rest_student/img/postgres-app.png)
+
+Добавим конфигурационную переменную в файл `.env`
+
+```
+DATABASE_URL=postgresql://localhost
+```
+
+![config local db](/rest_student/img/config-local-db.png)
+
+Теперь мы можем добавить данных в базу:
+- подключимся к серверу Postgres `psql`
+- создадим тестовую таблицу с полями id и name `create table test_table (id integer, name text)`
+- создадим запись в таблице `insert into test_table values (1, 'hello database')`
+- выйдем `\q`
+
+```bash
+psql
+
+create table test_table (id integer, name text);
+
+insert into test_table values (1, 'hello database');
+
+\q
+```
+
+![local pg](/rest_student/img/local-pg.png)
+
+Посмотрим что получилось
+
+```bash
+heroku local
+```
+
+![local open db](/rest_student/img/local-open-db.png)
+
+Все замечательно, наша локальная база данных соответствует удаленной.
+
+Теперь мы можем двигаться дальше и начать создавать свое собственое RESTful приложение на NodeJS и сервисом Heroku.
+
+***

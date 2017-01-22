@@ -1,0 +1,69 @@
+---
+layout: post
+title:  "REST 101 | Основные концепции"
+date:   2017-01-15 09:59:47 +0200
+author: Zhukova
+author_linkedin: https://ua.linkedin.com/in/helenzhukova
+tags: REST
+categories: REST101
+---
+
+# REST 101. Основные концепции RESTful приложения
+
+Мы взялись построить RESTful приложение, но знаем ли мы наверняка, что это значит?
+Если вы используете протокол HTTP и передаете данные в формате JSON, значит ли это что следуете принципам REST?
+
+Давайте подумаем над этим вопросом вместе.
+
+<div class="responsive-embed widescreen">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/2CrjWD3VGG4" frameborder="0" allowfullscreen></iframe>
+</div>
+
+В 2000 году человек по имени Рой Филдинг опубликовал свою диссертацию **“Архитектурные стили и дизайн архитектуры сетевого программного обеспечения” (Architectural Styles and the Design of Network-based Software Architecture)**. Именно в этой работе он предложил архитектурный стиль для сетевых приложений, который назвал **REpresentational State Transfer** и зашифровал его  акронимом REST.
+
+![REST properties](/rest_student/img/rest101/rest-properties.jpg)
+
+В этой работе автор выделил основные свойства архитектуры REST: Производительность (Performance), Масштабируемость (Scalability), Простота унифицированного интерфейса (Simplicity of a Uniform Interface), Открытость компонентов к возможным изменениям (Modifiability of components to meet changing needs), Прозрачность связей между компонентами (Visibility of communication between components by service agents), Переносимость компонентов системы (Portability of components by moving program code with the data), Надежность (Reliability).
+
+Чтобы эти свойства реализовать, необходимо соответствовать главным условиям стиля REST - это шесть основных условий, которые определяют RESTful систему.
+
+### <span class="icon-homecode" id="one" data-magellan-target="one"></span> Клиент-сервер (CLIENT-SERVER)
+Всем знакомая модель, где существует инициатор запроса - клиент и обработчик этого запроса - сервер, и есть первым условием для существования RESTful приложения. 
+
+Суть ограничения в том, что сервер и клиент - два относительно независимых друг от друга компонента. Сервер не должен заботиться об особенностях реализации клиента, как и клиента не интересует внутреннее устройства сервера.  
+![REST client-server](/rest_student/img/rest101/rest-client-server.jpg)
+
+### <span class="icon-homecode" id="two" data-magellan-target="two"></span> Отсутствие состояния (STATELESS)
+Все условия стиля REST являются взаимосвязанным, так, чтобы клиент и сервер сохраняли автономность, система должна быть свободна от состояния. Сервер не должен знать о том, какие запросы клиент делал ранее, не обязан беспокоиться об авторизации  и в целом, для сервера клиент не существует до тех пор,  пока он не сделал запрос. Это значит, что запрос от клиента должен содержать всю необходимую серверу информацию. 
+![REST stateless](/rest_student/img/rest101/rest-stateless.jpg)
+
+### <span class="icon-homecode" id="three" data-magellan-target="three"></span> Кеширование (CACHEABLE)
+Когда соблюдается предыдущее условие об отсутствии состояния, количество идентичных запросов может возрасти, и повредить производительности приложения. Эту проблему предлагается решить кешированием, как со стороны клиента, так и со стороны сервера. Таким образом достигается и уменьшение запросов от клиента на сервер и уменьшение работы сервера с хранилищами данных.
+![REST cache](/rest_student/img/rest101/rest-cache.jpg)
+
+### <span class="icon-homecode" id="four" data-magellan-target="four"></span> Унифицированный интерфейс (UNIFORM INTERFACE)
+Однообразие ведет к стабильности и предсказуемости, что скучно в жизни, но очень полезно в программировании. 
+Правила работы с вашим приложением должны следовать единому подходу в построении адреса доступа к ресурсу, формировании запроса, получении ответа и взаимодействии компонентов внутри системы.
+![REST interface](/rest_student/img/rest101/rest-inerface.jpg)
+
+### <span class="icon-homecode" id="five" data-magellan-target="five"></span> Многоуровневая система (LAYERED SYSTEM)
+Разделение компонентов на уровни, так чтобы каждый нижний уровень передавал свой вывод исключительно верхнему или взаимодействовал с одним контроллером.
+![REST layered](/rest_student/img/rest101/rest-layered.jpg)
+
+### <span class="icon-homecode" id="six" data-magellan-target="six"></span> Код по необходимости (CODE-ON-DEMAND)
+REST приложение может предлагать клиенту дополнительный функционал по требованию, это могут быть самостоятельно загружаемые или разрабатываемые и встраиваемые плагины и скрипты.
+
+---
+
+### Небольшой тест
+
+<iframe src="https://docs.google.com/forms/d/e/1FAIpQLScCnAfLRz47T6dc-qP7DDDwa8nPS32OnEuhzC1SNC-NA0ukyQ/viewform?embedded=true" width="760" height="500" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
+
+---
+#### Литература
+
+- RESTful Web APIs by Sam Ruby, Mike Amundsen, Leonard Richardson. Publisher: O'Reilly Media, Inc. Release Date: September 2013 ISBN: 9781449358068
+
+- Pro REST API Development with Node.js by Fernando Doglio Publisher: Apress Release Date: May 2015 ISBN: 9781484209172
+
+- RESTful Web Services by Sam Ruby, Leonard Richardson Publisher: O'Reilly Media, Inc. Release Date: May 2007 ISBN: 9780596529260

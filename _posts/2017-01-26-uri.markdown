@@ -1,0 +1,189 @@
+---
+layout: post
+title:  "Resource & URI | Практика"
+date:   2017-01-26 09:59:47 +0200
+author: Zhukova
+author_linkedin: https://ua.linkedin.com/in/helenzhukova
+tags: REST
+categories: REST101
+---
+
+# 5 URI практик, которые сделают ваш REST API стройным
+
+
+Мы строим REST API для учебных курсов. Основная идея - сделать один API для нескольких сервисов и административной панели, чтобы они все могли использовать наш главный ресурс, то есть, учебный курс. В этот раз поговорим о том, что такое ресурс и URI, узнаем 5 практических рекомендаций построения URI.
+
+<div class="responsive-embed widescreen">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/2CrjWD3VGG4" frameborder="0" allowfullscreen></iframe>
+</div>
+
+
+### <span class="icon-homecode" id="one" data-magellan-target="one"></span> Ресурс
+
+Ресурсом можно назвать любую ценную информацию, которую мы хотим предоставить пользователю, это может быть документ, HTML  страница, изображение, видео или JSON. 
+
+Так что, с этого момента, мы не говорим, что сервер отдает файлы или документы, теперь это все  “ресурсы”.
+
+![resource](/rest_student/img/uri/uri.jpg)
+
+> Хорошо, теперь следующий вопрос: “Как клиент доберется до нашего ресурса?”. 
+
+
+### <span class="icon-homecode" id="two" data-magellan-target="two"></span> URI
+
+Если вы хотите пойти в магазин, вам нужно знать адрес. 
+Даже каждый отдельный товар в магазине лежит на определенной полке, так что у него тоже есть адрес. 
+> Получается: нет адреса, нет ни магазина, ни товара.
+
+![resource map](/rest_student/img/uri/map.jpg)
+
+Это касается и нашего ресурса, если у него нет адреса в сети - его просто не существует. 
+
+**Адрес ресурса в сети - это URI (Uniform Resource Identifier).**
+
+> Если вам захочется блеснуть знанием о том, чем отличается URI от URL, то вот вам подсказка:
+
+**URL (Uniform Resource Locator)** - это частный случай URI, который указывает еще и на способ найти ресурс, в нашем случае, способом является протокол HTTP.
+
+Можно так это изобразить на диаграмме Венна.
+
+![resource url-urn](/rest_student/img/uri/url-urn.jpg)
+
+
+URI:
+* https://example.org/absolute/URI/with/absolute/path/to/resource.txt (URL)
+* ftp://example.org/resource.txt (URL)
+* urn:ISSN:1535–3613 (URN)
+
+
+> Между прочим, W3C считает URL - неформальным, хоть и широко распространенным заменителем для URI, который указывает на веб адрес [1]( https://en.wikipedia.org/wiki/Uniform_Resource_Identifier#CITEREFJoint_W3C.2FIETF_URI_Planning_Interest_Group2001).
+
+
+Схематически, URI выглядит так:
+
+``` URI = scheme "://" authority "/" path [ "?" query ] [ "#" fragment ] ```
+
+В нашем случае:
+* `scheme` - это протокол HTTP
+* `authority` - hostname
+* `path` - путь к ресурсу
+* `query` - строка запроса
+* `fragment` - указатель на часть одного ресурса
+
+![resource scheme](/rest_student/img/uri/scheme.jpg)
+
+> Придумать правильный URI - это одна из составляющих архитектуры REST, к этому надо подходить с умом, не забывая всех 6 условий REST стиля, о которых мы говорили в прошлый раз.
+
+### <span class="icon-homecode" id="three" data-magellan-target="three"></span> Первая URI практика: основной ресурс 
+
+Будьте последовательными в названии доменов и поддоменов, если мы делаем API для webcamp, то название нашего основного REST API ресурса должно выглядеть так:
+
+``` https://api.webcamp.com.ua ```
+
+Если мы хотим выделить отдельный ресурс на время разработки, то это будет:
+
+``` https://develop.webcamp.com.ua ```
+
+![resource auth](/rest_student/img/uri/auth.jpg)
+
+### <span class="icon-homecode" id="four" data-magellan-target="four"></span> Вторая URI практика: ресурсы
+
+**Каждый следующий слеш в пути (path) должен использоваться для указания на иерархию**, как папки на жестком диске. 
+Ресурс первого уровня у нас - courses.
+
+В нашем случае, путь для списка курсов будет выглядеть как
+
+``` https://api.webcamp.com.ua/courses ```
+
+Для каждого отдельного курса мы добавляем слеш к первому уровню:
+
+``` https://api.webcamp.com.ua/courses/javascript ```
+
+
+
+### <span class="icon-homecode" id="five" data-magellan-target="five"></span> Третья URI практика: типы ресурсов 
+
+
+
+**Документ**
+
+Допустим, у нас есть первый экземпляр нашего ресурса - это курс javascript. Будут еще и другие курсы, но общий принцип такой: **один объект или запись в базе данных, называется единичным ресурсом или документом**, его URI должен использовать единственное число и указывать на принадлежность ко множеству или подмножеству, например:
+
+``` https://api.webcamp.com.ua/courses/javascript ```
+
+``` https://api.webcamp.com.ua/courses/javascript/students/helen-zhukova ```
+
+> обратите внимание, для разделения слов используется дефис, но не нижнее подчеркивание, не используются заглавные буквы и отсутствует слеш в конце строки
+
+**Коллекция**
+
+Набор однотипных ресурсов - это коллекция, в URI для коллекций используют множественное число:
+
+``` https://api.webcamp.com.ua/courses ```
+
+``` https://api.webcamp.com.ua/courses/javascript/students ```
+
+**Контроллер**
+
+В нашем приложении будет возможность “записать” студента на курс, такой **ресурс отображает операцию над другими ресурсом и называется контроллером, для него используют глагол** и URI будет выглядеть так:
+
+``` POST api.webcamp.com.ua/courses/enroll ```
+
+
+
+### <span class="icon-homecode" id="six" data-magellan-target="six"></span> Четвертая URI практика: изменения
+
+Для добавления или изменения ресурсов новых URI не используют, так как они не создают нового типа ресурса, но изменяют уже существующий. 
+
+Когда мы захотим добавить новый курс в коллекцию, мы будем использовать тот же URI, но с другим HTTP методом:
+``` POST /api.webcamp.com.ua/courses ```
+
+Тот же подход касается и внесения изменений в документ:
+
+``` PUT api.webcamp.com.ua/courses/javascript ```
+
+
+![resource path](/rest_student/img/uri/path.jpg)
+
+> Не стоит использовать названия CRUD функций в URI, для этого существуют HTTP методы. 
+> 
+> Плохой пример:
+> 
+> GET /deleteUser?id=1234
+> 
+> GET /deleteUser/1234
+> 
+> DELETE /deleteUser/1234
+> 
+> POST /users/1234/delete
+
+### <span class="icon-homecode" id="seven" data-magellan-target="seven"></span> Пятая URI практика: запросы 
+
+Строка запроса позволяет разнообразить представление нашего ресурса по желанию пользователя. С ее помощью клиент может взаимодействовать с ресурсом, чтобы делать поиск или выборку.
+
+Строку запроса можно использовать для **фильтра** коллекции, например, чтобы выбрать курсы по сложности мы будем использовать:
+
+``` GET /api.webcamp.com.ua/courses?level=1 ```
+
+Следует пользоваться параметром запроса для **пагинации**, например так:
+
+``` GET /api.webcamp.com.ua/courses?limit=10&page=2 ```
+
+> при возрастающей сложности параметров выборки или поиска, запрос стоит заменить отдельным контроллером, где все параметры передаются клиентом в теле запроса
+
+> не стоит использовать строку запроса для управления кешированием, для этого есть HTTP хедеры.
+
+---
+
+### Небольшой тест
+
+<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfdcNfyRfiWkyxS2xlUot3OxDC5YA_nrSMfRdVDPU9lEvwY7Q/viewform?embedded=true" width="760" height="500" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
+
+---
+#### Литература
+
+- RESTful Web APIs by Sam Ruby, Mike Amundsen, Leonard Richardson. Publisher: O'Reilly Media, Inc. Release Date: September 2013 ISBN: 9781449358068
+
+- REST API Design Rulebook by Mark Masse Publisher: O'Reilly Media, Inc. Release Date: October 2011 ISBN: 9781449310509
+
+- RESTful Web Services by Sam Ruby, Leonard Richardson Publisher: O'Reilly Media, Inc. Release Date: May 2007 ISBN: 9780596529260

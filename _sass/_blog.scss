@@ -86,11 +86,16 @@ p {
         content: "\e86a"+" ";
       }
     }
-    p{
+    p {
       margin-top: 20px;
     }
-    h5{
+    h5 {
       margin-top: 8px;
+    }
+    blockquote {
+      p {
+        margin: 0;
+      }
     }
   }
 }
@@ -127,3 +132,4 @@ p {
     }
   }
 }
+

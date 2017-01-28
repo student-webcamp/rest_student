@@ -14,7 +14,7 @@ categories: REST101
 Мы строим REST API для учебных курсов. Основная идея - сделать один API для нескольких сервисов и административной панели, чтобы они все могли использовать наш главный ресурс, то есть, учебный курс. В этот раз поговорим о том, что такое ресурс и URI, узнаем 5 практических рекомендаций построения URI.
 
 <div class="responsive-embed widescreen">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/2CrjWD3VGG4" frameborder="0" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/0UoCxhCGivY" frameborder="0" allowfullscreen></iframe>
 </div>
 
 

@@ -51,9 +51,9 @@ categories: REST101
 
 
 URI:
-* https://example.org/absolute/URI/with/absolute/path/to/resource.txt (URL)
-* ftp://example.org/resource.txt (URL)
-* urn:ISSN:1535–3613 (URN)
+- https://example.org/absolute/URI/with/absolute/path/to/resource.txt (URL)
+- ftp://example.org/resource.txt (URL)
+- urn:ISSN:1535–3613 (URN)
 
 
 > Между прочим, W3C считает URL - неформальным, хоть и широко распространенным заменителем для URI, который указывает на веб адрес [1]( https://en.wikipedia.org/wiki/Uniform_Resource_Identifier#CITEREFJoint_W3C.2FIETF_URI_Planning_Interest_Group2001).
@@ -64,11 +64,11 @@ URI:
 ``` URI = scheme "://" authority "/" path [ "?" query ] [ "#" fragment ] ```
 
 В нашем случае:
-* `scheme` - это протокол HTTP
-* `authority` - hostname
-* `path` - путь к ресурсу
-* `query` - строка запроса
-* `fragment` - указатель на часть одного ресурса
+- `scheme` - это протокол HTTP
+- `authority` - hostname
+- `path` - путь к ресурсу
+- `query` - строка запроса
+- `fragment` - указатель на часть одного ресурса
 
 ![resource scheme](/rest_student/img/uri/scheme.jpg)
 
@@ -180,6 +180,7 @@ URI:
 <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfdcNfyRfiWkyxS2xlUot3OxDC5YA_nrSMfRdVDPU9lEvwY7Q/viewform?embedded=true" width="760" height="500" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
 
 ---
+
 #### Литература
 
 - RESTful Web APIs by Sam Ruby, Mike Amundsen, Leonard Richardson. Publisher: O'Reilly Media, Inc. Release Date: September 2013 ISBN: 9781449358068

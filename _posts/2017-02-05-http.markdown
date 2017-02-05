@@ -9,6 +9,7 @@ categories: HTTP
 ---
 
 # HTTP
+
 ## Часть первая. О том, как представить себя браузером.
 
 
@@ -119,3 +120,15 @@ Host: student.webcamp.com.ua
 ![http telnet](/rest_student/img/http/http-telnet.jpg)
 
 Через долю секунды я получаю ответ от сервера: исходный код HTML страницы http://student.webcamp.com.ua/rest_student/index.html
+
+---
+
+### Небольшой тест
+
+<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSehRi0zCfFD1hDKsVYn5EbwfM8rysIniJbIxxAYNIILLwTBDg/viewform?embedded=true" width="760" height="500" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
+
+---
+
+#### Литература
+
+- HTTP: The Definitive Guide by Brian Totty, Marjorie Sayer, Sailu Reddy, Anshu Aggarwal, David Gourley Publisher: O'Reilly Media, Inc. Release Date: September 2002 ISBN: 9781565925090
